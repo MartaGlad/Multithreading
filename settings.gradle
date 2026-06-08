@@ -1,2 +1,3 @@
 rootProject.name = 'Multithreading'
 include 'module-1'
+include 'module-2'
