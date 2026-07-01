@@ -15,10 +15,4 @@ public class Multiplier {
 
         return value * number;
     }
-
-
-    public int getValue() {
-
-        return value;
-    }
 }

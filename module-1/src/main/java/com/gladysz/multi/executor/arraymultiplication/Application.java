@@ -9,28 +9,35 @@ public class Application {
 
     private static final int SIZE = 10;
 
+
     public static void main(String[] args) {
 
         int[] anArray1 = new int[SIZE];
-        Arrays.fill(anArray1, 2);
-
         int[] anArray2 = new int[SIZE];
-        Arrays.fill(anArray2, 5);
-
         long[] resultArray = new long [SIZE];
 
+        if (anArray1.length == 0) {
+            System.out.println("Arrays are empty.");
+            return;
+        }
+
+        Arrays.fill(anArray1, 2);
+        Arrays.fill(anArray2, 5);
+
+
         int cores = Runtime.getRuntime().availableProcessors();
+        int threads = Math.min(cores, anArray1.length);
 
-        ExecutorService executor = Executors.newFixedThreadPool(cores);
+        ExecutorService executor = Executors.newFixedThreadPool(threads);
 
-        int baseChunkSize = anArray1.length / cores;
+        int baseChunkSize = anArray1.length / threads;
 
-        for (int n = 0; n < cores; n++) {
+        for (int n = 0; n < threads; n++) {
 
             int startIndex = n * baseChunkSize;
             int endIndex;
 
-            if (n == cores - 1) {
+            if (n == threads - 1) {
                 endIndex = anArray1.length;
             }
             else {
