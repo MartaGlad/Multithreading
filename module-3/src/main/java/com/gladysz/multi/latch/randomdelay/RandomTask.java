@@ -1,7 +1,7 @@
 package com.gladysz.multi.latch.randomdelay;
 
-import java.util.Random;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class RandomTask implements Runnable {
@@ -18,7 +18,8 @@ public class RandomTask implements Runnable {
 
     @Override
     public void run() {
-        int ms = 500 + new Random().nextInt(1501);
+
+        int ms = ThreadLocalRandom.current().nextInt(500, 2001);
         System.out.println(taskName + " will work at " + ms + " ms");
         try {
             Thread.sleep(ms);
