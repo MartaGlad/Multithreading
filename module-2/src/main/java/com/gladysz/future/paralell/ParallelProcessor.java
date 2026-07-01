@@ -17,6 +17,7 @@ public class ParallelProcessor {
             System.out.println(Thread.currentThread().getName() + " started");
             sleep(seconds);
             System.out.println(Thread.currentThread().getName() + " ended");
+
             return text.toUpperCase();
         });
     }

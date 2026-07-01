@@ -11,18 +11,21 @@ public class ParallelFutureTest {
 
         final ParallelProcessor processor = new ParallelProcessor();
 
-        final Future<String> futureResult1 = processor.process("result1", 7);
-        final Future<String> futureResult2 = processor.process("result2", 3);
+        try {
+            final Future<String> futureResult1 = processor.process("result1", 7);
+            final Future<String> futureResult2 = processor.process("result2", 3);
 
-        while(!futureResult1.isDone() || !futureResult2.isDone()) {
-            System.out.println("Result1 is " + (futureResult1.isDone() ? "done" : "not done"));
-            System.out.println("Result2 is " + (futureResult2.isDone() ? "done" : "not done"));
-            sleep(1);
+            while (!futureResult1.isDone() || !futureResult2.isDone()) {
+                System.out.println("Result1 is " + (futureResult1.isDone() ? "done" : "not done"));
+                System.out.println("Result2 is " + (futureResult2.isDone() ? "done" : "not done"));
+                sleep(1);
+            }
+
+            System.out.println("\nThe result1 is: " + futureResult1.get());
+            System.out.println("The result2 is: " + futureResult2.get());
+
+        } finally {
+            processor.shutdown();
         }
-
-        System.out.println("\nThe result1 is: " + futureResult1.get());
-        System.out.println("The result2 is: " + futureResult2.get());
-
-        processor.shutdown();
     }
 }
