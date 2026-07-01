@@ -13,5 +13,6 @@ public class Application {
             executor.submit(new ProcessA());
             executor.submit(new ProcessB());
         }
+        executor.shutdown();
     }
 }
