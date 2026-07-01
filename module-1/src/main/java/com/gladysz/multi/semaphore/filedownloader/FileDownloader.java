@@ -9,17 +9,25 @@ public class FileDownloader implements Runnable {
     private static int counter;
     private static final Semaphore semaphore = new Semaphore(10);
 
+
     @Override
     public void run() {
 
+        boolean acquired = false;
+
         try {
            semaphore.acquire();
+           acquired = true;
+
            download();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            return;
         }
         finally {
-            semaphore.release();
+            if (acquired) {
+                semaphore.release();
+            }
         }
     }
 
@@ -30,14 +38,14 @@ public class FileDownloader implements Runnable {
 
         synchronized (FileDownloader.class) {
             counter++;
-            System.out.println(Thread.currentThread().getName() + " stared download. " +
+            System.out.println(Thread.currentThread().getName() + " started download. " +
                     "Active downloads: " + counter);
         }
-        Thread.sleep(random.nextInt(100));
+
+        Thread.sleep(random.nextInt(1000));
 
         synchronized (FileDownloader.class) {
             counter--;
-
             System.out.println(Thread.currentThread().getName() + " finished download. " +
                     "Active downloads: " + counter);
         }

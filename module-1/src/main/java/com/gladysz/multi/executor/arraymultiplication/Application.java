@@ -24,7 +24,6 @@ public class Application {
         Arrays.fill(anArray1, 2);
         Arrays.fill(anArray2, 5);
 
-
         int cores = Runtime.getRuntime().availableProcessors();
         int threads = Math.min(cores, anArray1.length);
 

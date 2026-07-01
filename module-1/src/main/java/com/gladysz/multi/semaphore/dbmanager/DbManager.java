@@ -12,14 +12,21 @@ public class DbManager implements Runnable {
     @Override
     public void run() {
 
+        boolean acquired = false;
+
         try {
             semaphore.acquire();
+            acquired = true;
+
             connect();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+           Thread.currentThread().interrupt();
+           return;
         }
         finally {
-            semaphore.release();
+            if (acquired) {
+                semaphore.release();
+            }
         }
     }
 
