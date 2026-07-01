@@ -17,6 +17,8 @@ public class BarrierAppSum {
 
     private static void launchTheThread(CyclicBarrier barrier, int number) {
 
-        new SumRace(barrier, number);
+        SumRace race = new SumRace(barrier, number);
+        Thread thread = new Thread(race);
+        thread.start();
     }
 }

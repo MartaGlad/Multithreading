@@ -20,7 +20,9 @@ public class BarrierApp {
 
     private static void launchTheThread(CyclicBarrier barrier, int number) {
 
-        new PartialStep(barrier, number);
+        PartialStep step = new PartialStep(barrier, number);
+        Thread thread = new Thread(step);
+        thread.start();
     }
 }
 
