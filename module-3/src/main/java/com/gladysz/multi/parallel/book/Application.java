@@ -34,7 +34,7 @@ public class Application {
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         return (long) (b.getYear() * 2L + (double) b.getYear() / 2 + Math.floor(
                 Math.sqrt(b.getYear())));

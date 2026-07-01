@@ -22,7 +22,7 @@ public class Task implements Runnable {
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         synchronized (Task.class) {

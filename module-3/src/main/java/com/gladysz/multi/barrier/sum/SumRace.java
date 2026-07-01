@@ -36,7 +36,7 @@ public class SumRace implements Runnable {
         try {
             barrier.await();
         } catch (InterruptedException | BrokenBarrierException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 }

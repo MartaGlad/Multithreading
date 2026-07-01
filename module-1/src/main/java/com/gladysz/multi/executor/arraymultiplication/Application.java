@@ -51,7 +51,7 @@ public class Application {
         try {
             executor.awaitTermination(1, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         System.out.println(Arrays.toString(resultArray));
     }

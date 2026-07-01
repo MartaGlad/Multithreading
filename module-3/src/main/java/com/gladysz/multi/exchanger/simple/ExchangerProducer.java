@@ -19,7 +19,7 @@ public class ExchangerProducer implements Runnable {
             try {
                 exchanger.exchange("Message number: " + n);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

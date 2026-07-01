@@ -23,7 +23,7 @@ public class PartialStep implements Runnable {
         try {//wątek zatrzymuje się i czeka, aż łącznie 5 wątków dotrze do tej samej bariery
             barrier.await();
         } catch(InterruptedException | BrokenBarrierException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 }

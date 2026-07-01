@@ -21,7 +21,7 @@ public class BankAccount {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         balance -= amount;
     }

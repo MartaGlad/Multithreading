@@ -23,7 +23,6 @@ public class PartialMultiply implements Runnable {
 
         for (int n = lowerIndex; n < upperIndex; n++) {
             tab[n] = multiplier.multiply(tab[n]);
-
         }
     }
 }

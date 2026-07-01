@@ -20,7 +20,7 @@ public class BookConsumer implements Runnable {
                 Book book = exchanger.exchange(null);
                 System.out.println(Thread.currentThread().getName() + ":" + book);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

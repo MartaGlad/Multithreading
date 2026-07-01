@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 
-
 public class RandomTask implements Runnable {
 
     private final String taskName;
@@ -24,7 +23,7 @@ public class RandomTask implements Runnable {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         } finally {
             System.out.println(taskName + " finished working");
             theLatch.countDown();

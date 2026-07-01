@@ -10,6 +10,7 @@ public class BookProcessTask extends RecursiveTask<Long> {
 
 
     BookProcessTask(List<Book> books) {
+
         this.books = books;
     }
 
@@ -41,7 +42,7 @@ public class BookProcessTask extends RecursiveTask<Long> {
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         return (long) (b.getYear() * 2L + (double) b.getYear() / 2 + Math.floor(
                 Math.sqrt(b.getYear())));

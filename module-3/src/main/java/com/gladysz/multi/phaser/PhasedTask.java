@@ -24,7 +24,7 @@ public class PhasedTask implements Runnable {
         try {
             Thread.sleep(200);
         }  catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance(); //skończył fazę 0
         //i jeżeli pozostałe wątki jeszcze nie skończyły fazy 0, czeka
@@ -35,7 +35,7 @@ public class PhasedTask implements Runnable {
         try {
             Thread.sleep(200);
         }  catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
 
@@ -44,7 +44,7 @@ public class PhasedTask implements Runnable {
         try {
             Thread.sleep(200);
         }  catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
 
@@ -53,7 +53,7 @@ public class PhasedTask implements Runnable {
         try {
             Thread.sleep(200);
         }  catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
 
@@ -62,7 +62,7 @@ public class PhasedTask implements Runnable {
         try {
             Thread.sleep(200);
         }  catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         phaser.arriveAndDeregister();
         //dotarł do końca i wypisujęe się z Phasera,

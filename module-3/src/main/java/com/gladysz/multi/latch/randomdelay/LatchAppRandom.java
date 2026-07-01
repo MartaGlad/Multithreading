@@ -18,7 +18,7 @@ public class LatchAppRandom {
         try {
             theLatch.await();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("The latch has been closed");

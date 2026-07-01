@@ -22,7 +22,7 @@ public class Consumer extends Thread {
                 counter++;
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 }

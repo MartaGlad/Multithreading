@@ -20,7 +20,7 @@ public class ExchangerConsumer implements Runnable {
                 String msg = exchanger.exchange("");
                 System.out.println(msg);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }

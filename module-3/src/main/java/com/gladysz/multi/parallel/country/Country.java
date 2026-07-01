@@ -11,12 +11,6 @@ public final class Country {
     }
 
 
-    public String getName() {
-
-        return name;
-    }
-
-
     public long getPeopleQuantity() {
 
         return peopleQuantity;
