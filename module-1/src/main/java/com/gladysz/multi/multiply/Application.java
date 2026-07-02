@@ -7,6 +7,12 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
 
         int[] anArray = new int[10];
+
+        if (anArray.length == 0) {
+            System.out.println("The array is empty.");
+            return;
+        }
+
         Arrays.fill(anArray, 2);
 
         Multiplier multiplier = new Multiplier(2);

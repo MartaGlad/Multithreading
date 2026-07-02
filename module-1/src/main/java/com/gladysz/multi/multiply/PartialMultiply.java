@@ -11,6 +11,11 @@ public class PartialMultiply implements Runnable {
 
 
     public PartialMultiply (Multiplier multiplier, int[] tab, int lowerIndex, int upperIndex) {
+        if (multiplier == null || tab == null
+                || lowerIndex < 0 || upperIndex < 0 || lowerIndex > upperIndex) {
+            throw new IllegalArgumentException("Invalid data");
+        }
+
         this.multiplier = multiplier;
         this.tab = tab;
         this.lowerIndex = lowerIndex;
