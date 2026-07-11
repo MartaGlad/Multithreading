@@ -1,6 +1,6 @@
 package com.gladysz.multi.executor.counter;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Task implements Runnable {
 
@@ -16,8 +16,7 @@ public class Task implements Runnable {
 
     private void taskBody() {
 
-        Random random = new Random();
-        int delay = random.nextInt(100);
+        int delay = ThreadLocalRandom.current().nextInt(100);
 
         try {
             Thread.sleep(delay);

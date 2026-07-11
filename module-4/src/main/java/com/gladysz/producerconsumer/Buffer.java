@@ -2,7 +2,7 @@ package com.gladysz.producerconsumer;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -26,8 +26,7 @@ public class Buffer {
                 bufferNotFull.await(); //czeka aż bufor nie bedzie pełny, await tymczasowo zwalnia lock
             }
 
-            final Random theRandom = new Random();
-            int product = theRandom.nextInt();
+            int product = ThreadLocalRandom.current().nextInt();
             products.offer(product);
             System.out.println("[PRODUCER] Added to buffer " + product);
 

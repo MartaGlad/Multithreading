@@ -13,16 +13,15 @@ public class Cinema {
     public static void main(String[] args) {
 
         movieProviderOne.provideMovies().thenCompose(firstMovies ->
-            movieProviderTwo.provideMovies()
-                    .thenApply(secondMovies -> {
+            movieProviderTwo.provideMovies().thenApply(secondMovies -> {
 
-                        List<Movie> mergedMovies = new ArrayList<>(firstMovies);
-                        mergedMovies.addAll(secondMovies);
+                List<Movie> mergedMovies = new ArrayList<>(firstMovies);
+                mergedMovies.addAll(secondMovies);
 
-                        Set<Movie> uniqueMovies = new LinkedHashSet<>(mergedMovies);
+                Set<Movie> uniqueMovies = new LinkedHashSet<>(mergedMovies);
 
-                        return new ArrayList<>(uniqueMovies);
-                    })
+                return new ArrayList<>(uniqueMovies);
+            })
         ).thenAccept(movies -> movies.forEach(System.out::println)).join();
     }
 }

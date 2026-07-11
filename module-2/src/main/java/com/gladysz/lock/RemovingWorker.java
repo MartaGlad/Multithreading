@@ -1,6 +1,6 @@
 package com.gladysz.lock;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static com.gladysz.future.util.SleepUtil.sleep;
 
@@ -19,13 +19,11 @@ public class RemovingWorker implements Runnable {
     @Override
     public void run() {
 
-        final Random random = new Random();
-
         for (int i = 0; i < 3; i++) {
 
             sleep(1);
 
-            final int id = random.nextInt(3);
+            final int id = ThreadLocalRandom.current().nextInt(3);
 
             if (id == 0) {
                 warehouse.remove(Product.BOOK, workerName);

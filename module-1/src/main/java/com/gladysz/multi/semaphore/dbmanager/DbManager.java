@@ -1,7 +1,7 @@
 package com.gladysz.multi.semaphore.dbmanager;
 
-import java.util.Random;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class DbManager implements Runnable {
@@ -21,7 +21,6 @@ public class DbManager implements Runnable {
             connect();
         } catch (InterruptedException e) {
            Thread.currentThread().interrupt();
-           return;
         }
         finally {
             if (acquired) {
@@ -33,14 +32,12 @@ public class DbManager implements Runnable {
 
     private void connect() throws InterruptedException {
 
-        Random random = new Random();
-
         synchronized (DbManager.class) {
             counter++;
             System.out.println("There is/are " + counter + " connections");
         }
 
-        Thread.sleep(random.nextInt(100));
+        Thread.sleep(ThreadLocalRandom.current().nextInt(100));
 
         synchronized (DbManager.class) {
             counter--;

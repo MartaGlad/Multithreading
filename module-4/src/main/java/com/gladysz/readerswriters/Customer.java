@@ -14,18 +14,6 @@ public class Customer {
     }
 
 
-    public UUID getId() {
-
-        return id;
-    }
-
-
-    public String getName() {
-
-        return name;
-    }
-
-
     @Override
     public String toString() {
         return "Customer{" +

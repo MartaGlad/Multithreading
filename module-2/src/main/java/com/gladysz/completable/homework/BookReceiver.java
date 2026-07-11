@@ -6,7 +6,7 @@ import static com.gladysz.future.util.SleepUtil.sleep;
 
 public class BookReceiver {
 
-    public CompletableFuture<Book> receive () {
+    public CompletableFuture<Book> receive() {
 
         return CompletableFuture.supplyAsync(() -> {
             System.out.println("Waiting for book...");

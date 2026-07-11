@@ -5,7 +5,7 @@ import java.util.concurrent.Exchanger;
 
 public class ExchangerConsumer implements Runnable {
 
-    private Exchanger<String> exchanger;
+    private final Exchanger<String> exchanger;
 
     ExchangerConsumer(Exchanger<String> exchanger) {
         this.exchanger = exchanger;

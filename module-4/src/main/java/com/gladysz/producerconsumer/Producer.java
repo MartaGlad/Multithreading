@@ -1,6 +1,6 @@
 package com.gladysz.producerconsumer;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Producer extends Thread {
 
@@ -14,11 +14,10 @@ public class Producer extends Thread {
     @Override
     public void run() {
         int counter = 0;
-        final Random random = new Random();
         try {
             while (counter < 3) {
                 buffer.add();
-                Thread.sleep(random.nextInt(1000));
+                Thread.sleep(ThreadLocalRandom.current().nextInt(1000));
                 counter++;
             }
         } catch (InterruptedException e) {

@@ -23,7 +23,7 @@ public class PhasedTask implements Runnable {
         System.out.println("Process number " + number + " phase 0 entered");
         try {
             Thread.sleep(200);
-        }  catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance(); //skończył fazę 0
@@ -34,7 +34,7 @@ public class PhasedTask implements Runnable {
         System.out.println("Process number " + number + " phase 1 entered");
         try {
             Thread.sleep(200);
-        }  catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
@@ -43,7 +43,7 @@ public class PhasedTask implements Runnable {
         System.out.println("Process number " + number + " phase 2 entered");
         try {
             Thread.sleep(200);
-        }  catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
@@ -52,7 +52,7 @@ public class PhasedTask implements Runnable {
         System.out.println("Process number " + number + " phase 3 entered");
         try {
             Thread.sleep(200);
-        }  catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         phaser.arriveAndAwaitAdvance();
@@ -61,12 +61,11 @@ public class PhasedTask implements Runnable {
         System.out.println("Process number " + number + " finish reached");
         try {
             Thread.sleep(200);
-        }  catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         phaser.arriveAndDeregister();
         //dotarł do końca i wypisujęe się z Phasera,
         //czyli ten wątek nie będzie już brał udziału w kolejnych fazach.
-
     }
 }

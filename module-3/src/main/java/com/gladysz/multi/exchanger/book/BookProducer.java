@@ -1,7 +1,7 @@
 package com.gladysz.multi.exchanger.book;
 
-import java.util.Random;
 import java.util.concurrent.Exchanger;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class BookProducer implements Runnable {
@@ -17,14 +17,14 @@ public class BookProducer implements Runnable {
 
     @Override
     public void run() {
-        Random rand = new Random();
         for (int i = 0; i < 10; i++) {
-            Book book = new Book("Title number " + rand.nextInt(1000),
-                    "Author number " + rand.nextInt(1000));
+            Book book = new Book("Title number " + ThreadLocalRandom.current().nextInt(1000),
+                    "Author number " + ThreadLocalRandom.current().nextInt(1000));
             try {
                 exchanger.exchange(book);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                return;
             }
         }
     }

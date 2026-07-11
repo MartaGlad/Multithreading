@@ -21,6 +21,7 @@ public class BookConsumer implements Runnable {
                 System.out.println(Thread.currentThread().getName() + ":" + book);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                return;
             }
         }
     }

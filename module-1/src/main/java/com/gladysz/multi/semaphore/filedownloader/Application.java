@@ -22,7 +22,7 @@ public class Application {
             if (finished) {
                 System.out.println("All files downloaded");
             }
-            else  {
+            else {
                 System.out.println("Timeout: not all files were downloaded.");
                 executor.shutdownNow();
             }

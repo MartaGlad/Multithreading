@@ -1,8 +1,8 @@
 package com.gladysz.completable;
 
-import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static com.gladysz.future.util.SleepUtil.sleep;
 
@@ -15,8 +15,7 @@ public class CombineTest {
 
             System.out.println("Calculation 1 in process...");
             sleep(4);
-            final Random random = new Random();
-            final int result = random.nextInt(1000);
+            final int result = ThreadLocalRandom.current().nextInt(1000);
             System.out.println("The result of calculation 1 is " + result);
             return result;
         });
@@ -25,8 +24,7 @@ public class CombineTest {
         final CompletableFuture<Integer> calculationFuture2 = CompletableFuture.supplyAsync(() -> {
             System.out.println("Calculation 2 in process...");
             sleep(2);
-            final Random random = new Random();
-            final int result = random.nextInt(10);
+            final int result = ThreadLocalRandom.current().nextInt(10);
             System.out.println("The result of calculation 2 is " + result);
             return result;
         });

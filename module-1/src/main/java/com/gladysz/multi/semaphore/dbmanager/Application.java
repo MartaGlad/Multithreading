@@ -22,7 +22,7 @@ public class Application {
             if (finished) {
                 System.out.println("All database connection tasks finished");
             }
-            else  {
+            else {
                 System.out.println("Timeout: not all database connection tasks finished");
                 executor.shutdownNow();
             }

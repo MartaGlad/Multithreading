@@ -1,7 +1,7 @@
 package com.gladysz.multi.semaphore.filedownloader;
 
-import java.util.Random;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class FileDownloader implements Runnable {
@@ -22,7 +22,6 @@ public class FileDownloader implements Runnable {
            download();
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return;
         }
         finally {
             if (acquired) {
@@ -34,15 +33,13 @@ public class FileDownloader implements Runnable {
 
     private void download() throws InterruptedException {
 
-        Random random = new Random();
-
         synchronized (FileDownloader.class) {
             counter++;
             System.out.println(Thread.currentThread().getName() + " started download. " +
                     "Active downloads: " + counter);
         }
 
-        Thread.sleep(random.nextInt(1000));
+        Thread.sleep(ThreadLocalRandom.current().nextInt(1000));
 
         synchronized (FileDownloader.class) {
             counter--;

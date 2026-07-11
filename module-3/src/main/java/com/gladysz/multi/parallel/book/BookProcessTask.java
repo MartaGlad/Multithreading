@@ -39,6 +39,7 @@ public class BookProcessTask extends RecursiveTask<Long> {
 
 
     private static long processBook (Book b) {
+
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {

@@ -5,7 +5,7 @@ import java.util.concurrent.Exchanger;
 
 public class ExchangerProducer implements Runnable {
 
-    private Exchanger<String> exchanger;
+    private final Exchanger<String> exchanger;
 
     ExchangerProducer(Exchanger<String> exchanger) {
         this.exchanger = exchanger;
@@ -20,6 +20,7 @@ public class ExchangerProducer implements Runnable {
                 exchanger.exchange("Message number: " + n);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+                return;
             }
         }
     }
